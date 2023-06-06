@@ -1,8 +1,12 @@
 package model;
 
+import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+
 public class Accidente {
     private int idAccidente;
-    //private int rut;
+    //private Cliente rut;
     private String dia;
     private String hora;
     private String lugar;
@@ -34,7 +38,14 @@ public class Accidente {
     }
 
     public void setDia(String dia) {
-        this.dia = dia;
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        dateFormat.setLenient(false);  // no permite fechas inválidas
+        try {
+            this.dia = String.valueOf((Date) dateFormat.parse(dia));
+        } catch (ParseException e) {
+            throw new IllegalArgumentException("La fecha de nacimiento debe estar en el formato DD/MM/AAAA.");
+        }
+
     }
 
     public String getHora() {
@@ -46,18 +57,27 @@ public class Accidente {
     }
 
     public String getLugar() {
+
         return lugar;
     }
 
     public void setLugar(String lugar) {
+        if (!(lugar.length() >= 10 && lugar.length() <= 50))
+            throw new IllegalArgumentException("El lugar ingresado debe tener " +
+                    "como mínimo 10 caracteres y 50 como máximo. Ingrese de nuevo.");
+
         this.lugar = lugar;
     }
 
     public String getOrigen() {
+
         return origen;
     }
 
     public void setOrigen(String origen) {
+        if (!(origen.length()  <= 100))
+            throw new IllegalArgumentException("El Origen Ingresado debe tener " +
+                    "como máximo 100 caracteres. Ingrese de nuevo.");
         this.origen = origen;
     }
 
@@ -66,6 +86,9 @@ public class Accidente {
     }
 
     public void setConsecuencias(String consecuencias) {
+        if (!(consecuencias.length()  <= 100))
+            throw new IllegalArgumentException("La(s) Consecuencia(s) Ingresada debe tener " +
+                    "como máximo 100 caracteres. Ingrese de nuevo.");
         this.consecuencias = consecuencias;
     }
 
