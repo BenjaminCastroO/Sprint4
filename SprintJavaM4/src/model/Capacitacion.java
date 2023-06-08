@@ -1,9 +1,13 @@
 package model;
+
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+
 public class Capacitacion {
   private int id;
   private int rut;
   private String dia;
-  private String hora;
+  private LocalTime hora;
   private String lugar;
   private int duracion;
   private int cantAsistentes;
@@ -15,15 +19,15 @@ public class Capacitacion {
     this.cantAsistentes = cantAsistentes;
   }
 
-  public Capacitacion(int id, int rut, String dia, String hora, String lugar,
+  public Capacitacion(int id, int rut, String dia, LocalTime hora, String lugar,
                       int duracion, int cantAsistentes) {
     setId(id);
     this.rut = rut;
     setDia(dia);
-    this.hora = hora;
+    setHora(hora);
     setLugar(lugar);
-    this.duracion = duracion;
-    this.cantAsistentes = cantAsistentes;
+    setDuracion(duracion);
+    setCantAsistentes(cantAsistentes);
   }
 
   public String mostrarDetalle(){
@@ -57,12 +61,12 @@ public class Capacitacion {
     this.dia = dia;
   }
 
-  public String getHora() {
+  public LocalTime getHora() {
     return hora;
   }
 
-  public void setHora(String hora) {
-    this.hora = hora;
+  public void setHora(LocalTime hora) {
+    this.hora = hora.format("HH:mm");
   }
 
   public String getLugar() {

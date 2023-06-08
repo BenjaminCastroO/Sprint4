@@ -1,5 +1,5 @@
+//etapa 1 listo
 package model;
-
 import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -8,22 +8,15 @@ public class Usuario {
 private String nombre;
 private  String fechaNacimiento;
 private int run;
-
+// qué hacer con las validaciones para cuando se ingresen datos por consola,
+// ya que actualmente botan el programa cuando no se logra validar un atributo
     public Usuario() {
     }
 
     public Usuario(String nombre, String fechaNacimiento, int run) {
-        if (nombre.length() >=10 && nombre.length()<=50){
-            this.nombre = nombre;
-        }else {
-            throw new IllegalArgumentException("El nombre debe tener entre 10 y 50 caracteres");
-        }
-        this.fechaNacimiento = fechaNacimiento;
-        if (run < 99999999){
-            this.run = run;
-        }else{
-            throw new IllegalArgumentException("El RUN debe ser menor a 99.999.999");
-        }
+        setNombre(nombre);
+        setFechaNacimiento(fechaNacimiento);
+        setRun(run);
     }
 
     public String getNombre() {
@@ -31,7 +24,11 @@ private int run;
     }
 
     public void setNombre(String nombre) {
-        this.nombre = nombre;
+        if (nombre.length() >=10 && nombre.length()<=50){
+            this.nombre = nombre;
+        }else {
+            throw new IllegalArgumentException("El nombre debe tener entre 10 y 50 caracteres");
+        }
     }
 
     public String getFechaNacimiento() {
@@ -53,7 +50,11 @@ private int run;
     }
 
     public void setRun(int run) {
-        this.run = run;
+        if (run < 99999999){
+            this.run = run;
+        }else{
+            throw new IllegalArgumentException("El RUN debe ser menor a 99.999.999");
+        }
     }
 
     @Override
