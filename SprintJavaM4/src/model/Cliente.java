@@ -1,7 +1,7 @@
 package model;
 
 import java.sql.Date;
-public class Cliente {
+public class Cliente extends Usuario {
   public final int FONASA = 1;
   public final int ISAPRE = 2;
 

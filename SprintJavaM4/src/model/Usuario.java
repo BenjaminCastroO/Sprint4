@@ -3,10 +3,13 @@ package model;
 import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
 
-public class Usuario {
+public class Usuario implements IAsesoria{
 private String nombre;
-private  String fechaNacimiento;
+private String fechaNacimiento;
 private int run;
 // qué hacer con las validaciones para cuando se ingresen datos por consola,
 // ya que actualmente botan el programa cuando no se logra validar un atributo
@@ -39,7 +42,9 @@ private int run;
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         dateFormat.setLenient(false);  // no permite fechas inválidas
         try {
-            this.fechaNacimiento = String.valueOf((Date) dateFormat.parse(fechaNacimiento));
+            String prueba =
+                    String.valueOf(dateFormat.parse(fechaNacimiento).toLocaleString());
+            this.fechaNacimiento = fechaNacimiento;
         } catch (ParseException e) {
             throw new IllegalArgumentException("La fecha de nacimiento debe estar en el formato DD/MM/AAAA.");
         }
@@ -57,6 +62,13 @@ private int run;
         }
     }
 
+    public void mostrarEdad() {
+        DateTimeFormatter tiempo = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        LocalDate cumpleanios = LocalDate.parse(this.fechaNacimiento,tiempo);
+        LocalDate ahora = LocalDate.now();
+        Period edad = Period.between(cumpleanios,ahora);
+        System.out.println(edad.getYears());
+    }
     @Override
     public String toString() {
         return "Usuario{" +
@@ -64,5 +76,10 @@ private int run;
                 ", fechaNacimiento='" + fechaNacimiento + '\'' +
                 ", run=" + run +
                 '}';
+    }
+
+    @Override
+    public void analizarUsuario() {
+        System.out.println("nombre='" + nombre + '\'' + ", run=" + run);
     }
 }

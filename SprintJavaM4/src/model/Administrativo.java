@@ -2,7 +2,7 @@ package model;
 
 import java.sql.Date;
 
-public class Administrativo {
+public class Administrativo extends Usuario{
   private String area;
   private String experiencia;
 

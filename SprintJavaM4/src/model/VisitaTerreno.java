@@ -7,6 +7,13 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
+
+
+//Estamos en break 21:06 -> 21:20
+
+
+
+
 public class VisitaTerreno {
     private int idVisita;
     private int rut;
