@@ -1,25 +1,27 @@
 package model;
 
+import java.sql.Date;
+import java.text.ParseException;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
+import java.time.format.DateTimeParseException;
+import java.util.SimpleTimeZone;
 
 public class Capacitacion {
   private int id;
   private int rut;
   private String dia;
-  private LocalTime hora;
+  private String hora;
   private String lugar;
   private int duracion;
   private int cantAsistentes;
 
-  public Capacitacion(int id, int rut, String lugar, int cantAsistentes) {
-    setId(id);
-    this.rut = rut;
-    setLugar(lugar);
-    this.cantAsistentes = cantAsistentes;
+  public Capacitacion() {
+
   }
 
-  public Capacitacion(int id, int rut, String dia, LocalTime hora, String lugar,
+  public Capacitacion(int id, int rut, String dia, String hora, String lugar,
                       int duracion, int cantAsistentes) {
     setId(id);
     this.rut = rut;
@@ -31,7 +33,7 @@ public class Capacitacion {
   }
 
   public String mostrarDetalle(){
-    String mensaje = "La capacitación será en " + lugar + " a las " + hora  +
+    String mensaje = "La capacitación será en " + lugar + " a las " + hora +
             " del día " + dia + " y durará " + duracion + " minutos.";
     return mensaje;
   }
@@ -58,15 +60,21 @@ public class Capacitacion {
             dia.equalsIgnoreCase("domingo")))
       throw new IllegalArgumentException("Ingrese un día de la semana válido,"
               + " (lunes, martes, miercoles, jueves, viernes, sabado, domingo).");
-    this.dia = dia;
+    this.dia = dia.toLowerCase();
   }
 
-  public LocalTime getHora() {
+  public String getHora() {
     return hora;
   }
 
-  public void setHora(LocalTime hora) {
-    this.hora = hora.format("HH:mm");
+  public void setHora(String hora) {
+    DateTimeFormatter tiempo = DateTimeFormatter.ofPattern("HH:mm");
+    try {
+      this.hora = String.valueOf((LocalTime) tiempo.parse(hora));
+    } catch (DateTimeParseException e) {
+      throw new IllegalArgumentException("La Hora debe estar ingresada en el " +
+              "formato HH:mm ");
+    }
   }
 
   public String getLugar() {
@@ -114,7 +122,6 @@ public class Capacitacion {
   @Override
   public String toString() {
     return "Capacitacion{" +
-            "cliente=" + cliente +
             ", id=" + id +
             ", rut=" + rut +
             ", dia='" + dia + '\'' +
