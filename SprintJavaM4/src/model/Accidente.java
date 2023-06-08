@@ -3,10 +3,13 @@ package model;
 import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 
 public class Accidente {
     private int idAccidente;
-    //private Cliente rut;
+    private int rut;
     private String dia;
     private String hora;
     private String lugar;
@@ -16,21 +19,34 @@ public class Accidente {
     public Accidente() {
     }
 
-    public Accidente(int idAccidente, String dia, String hora, String lugar, String origen, String consecuencias) {
-        this.idAccidente = idAccidente;
-        this.dia = dia;
-        this.hora = hora;
-        this.lugar = lugar;
-        this.origen = origen;
-        this.consecuencias = consecuencias;
+    public Accidente(int idAccidente, int rut, String dia, String hora, String lugar, String origen, String consecuencias) {
+        setIdAccidente(idAccidente);
+        this.rut = rut;
+        setDia(dia);
+        setHora(hora);
+        setLugar(lugar);
+        setOrigen(origen);
+        setConsecuencias(consecuencias);
     }
+
 
     public int getIdAccidente() {
         return idAccidente;
     }
 
     public void setIdAccidente(int idAccidente) {
+        if (idAccidente < 0)
+            throw new IllegalArgumentException("El id interno del Accidente " +
+                    "debe ser mayor a cero.");
         this.idAccidente = idAccidente;
+    }
+
+    public int getRut() {
+        return rut;
+    }
+
+    public void setRut(int rut) {
+        this.rut = rut;
     }
 
     public String getDia() {
@@ -46,6 +62,7 @@ public class Accidente {
             throw new IllegalArgumentException("La fecha de nacimiento debe estar en el formato DD/MM/AAAA.");
         }
 
+
     }
 
     public String getHora() {
@@ -53,7 +70,13 @@ public class Accidente {
     }
 
     public void setHora(String hora) {
-        this.hora = hora;
+        DateTimeFormatter tiempo = DateTimeFormatter.ofPattern("HH:mm");
+        try {
+            this.hora = String.valueOf((LocalTime) tiempo.parse(hora));
+        } catch (DateTimeParseException e) {
+            throw new IllegalArgumentException("La Hora debe estar ingresada en el " +
+                    "formato HH:mm ");
+        }
     }
 
     public String getLugar() {
@@ -96,6 +119,7 @@ public class Accidente {
     public String toString() {
         return "Accidente{" +
                 "idAccidente=" + idAccidente +
+                ", rut=" + rut +
                 ", dia='" + dia + '\'' +
                 ", hora='" + hora + '\'' +
                 ", lugar='" + lugar + '\'' +
