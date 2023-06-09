@@ -140,6 +140,11 @@ public class Cliente extends Usuario {
   }
 
   @Override
+  public void analizarUsuario() {
+    super.analizarUsuario();
+    System.out.println("Dirección = '" + direccion + '\'' + ", comuna = " + comuna);
+  }
+  @Override
   public String toString() {
     return "model.Cliente " +
             "rut=" + rut +

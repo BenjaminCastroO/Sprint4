@@ -67,7 +67,7 @@ private int run;
         LocalDate cumpleanios = LocalDate.parse(this.fechaNacimiento,tiempo);
         LocalDate ahora = LocalDate.now();
         Period edad = Period.between(cumpleanios,ahora);
-        System.out.println(edad.getYears());
+        System.out.println("El usuario tiene " + edad.getYears() + " años");
     }
     @Override
     public String toString() {

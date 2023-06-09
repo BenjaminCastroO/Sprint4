@@ -2,6 +2,7 @@ package model;
 
 import java.sql.Date;
 import java.text.ParseException;
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeFormatterBuilder;
@@ -70,7 +71,8 @@ public class Capacitacion {
   public void setHora(String hora) {
     DateTimeFormatter tiempo = DateTimeFormatter.ofPattern("HH:mm");
     try {
-      this.hora = String.valueOf((LocalTime) tiempo.parse(hora));
+      LocalTime horalocal = LocalTime.parse(hora,tiempo);
+      this.hora = String.valueOf(horalocal);
     } catch (DateTimeParseException e) {
       throw new IllegalArgumentException("La Hora debe estar ingresada en el " +
               "formato HH:mm ");
