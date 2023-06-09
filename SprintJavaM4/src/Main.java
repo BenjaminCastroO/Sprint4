@@ -4,8 +4,6 @@ import java.sql.Date;
 public class Main {
   public static void main(String[] args) {
 
-    //EN  BREAK
-
     Usuario user1 = new Usuario("Benjamín Castro","07/07/1997",11223344);
     Usuario user2 = new Usuario("Pedro Díaz","10/10/1990",123123);
     Usuario user3 = new Usuario("Gonzalo Mercado","31/03/1985",654321);
