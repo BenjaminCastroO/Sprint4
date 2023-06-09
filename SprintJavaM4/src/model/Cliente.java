@@ -79,7 +79,7 @@ public class Cliente extends Usuario {
   }
 
   public void setTelefono(int telefono) {
-    if (!(telefono== 0))
+    if ((telefono== 0))
       throw new IllegalArgumentException("El telefono no puede ser nulo.");
     this.telefono = telefono;
   }
