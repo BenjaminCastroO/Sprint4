@@ -52,19 +52,19 @@ public class Menu {
                     break;
                 }
                 case 5: {
-                    //eliminarUsuario();
+                    //contenedor.eliminarUsuario();
                     break;
                 }
                 case 6: {
-                    //listarUsuario();
+                    contenedor.listarUsuarios();
                     break;
                 }
                 case 7: {
-                    //listarUsuarioTipo();
+                    contenedor.listarUsuariosPorTipo();
                     break;
                 }
                 case 8: {
-                    //listarCapacitacion();
+                    contenedor.listarCapacitaciones();
                     break;
                 }
 
