@@ -13,7 +13,11 @@ private String fechaNacimiento;
 private int run;
 // qué hacer con las validaciones para cuando se ingresen datos por consola,
 // ya que actualmente botan el programa cuando no se logra validar un atributo
-    public Usuario() {
+
+
+    public Usuario(String nombre, String fechaNacimiento) {
+        this.nombre = nombre;
+        this.fechaNacimiento = fechaNacimiento;
     }
 
     public Usuario(String nombre, String fechaNacimiento, int run) {

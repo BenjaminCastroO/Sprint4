@@ -36,7 +36,7 @@ public class Menu {
             op = opcionDeMenu();
             switch (op){
                 case 1: {
-                    contenedor.agregarCliente();
+                  //  contenedor.agregarCliente();
                     break;
                 }
                 case 2: {
@@ -48,23 +48,23 @@ public class Menu {
                     break;
                 }
                 case 4: {
-                    contenedor.agregarCapacitacion();
+                 //   contenedor.agregarCapacitacion();
                     break;
                 }
                 case 5: {
-                    contenedor.eliminarUsuario();
+                  //  contenedor.eliminarUsuario();
                     break;
                 }
                 case 6: {
-                    contenedor.listarUsuarios();
+                   // contenedor.listarUsuarios();
                     break;
                 }
                 case 7: {
-                    contenedor.listarUsuariosPorTipo();
+                    //contenedor.listarUsuariosPorTipo();
                     break;
                 }
                 case 8: {
-                    contenedor.listarCapacitaciones();
+                   // contenedor.listarCapacitaciones();
                     break;
                 }
 

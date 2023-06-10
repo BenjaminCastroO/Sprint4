@@ -10,93 +10,17 @@ public class Contenedor {
   private List<Capacitacion> listCapacitaciones = new ArrayList<>();
 
 
-  public Cliente agregarCliente(){
-
-    Cliente cliente = new Cliente();
-    Scanner entrada = new Scanner(System.in);
-
-    System.out.println("Ingresa Rut:");
-    cliente.setRun(entrada.nextInt());
-    entrada.nextLine();
-
-    System.out.println("Ingresa el Nombres:");
-    cliente.setNombres(entrada.nextLine());
-
-    System.out.println("Ingresa el Apellido:");
-    cliente.setApellidos(entrada.nextLine());
-
-    System.out.println("Ingresa Telefono:");
-    cliente.setTelefono(entrada.nextInt());
-    entrada.nextLine();
-
-    System.out.println("Ingresa AFP:");
-    cliente.setAfp(entrada.nextLine());
-
-    System.out.println("Ingresa Sistema Salud (1.FONASA - 2. ISAPRE):");
-    cliente.setSistemaDeSalud(entrada.nextInt());
-    entrada.nextLine();
-
-    System.out.println("Ingresa Dirección:");
-    cliente.setDireccion(entrada.nextLine());
-
-    System.out.println("Ingresa Comuna:");
-    cliente.setComuna(entrada.nextLine());
-
-    System.out.println("Ingresa Edad:");
-    cliente.setEdad(entrada.nextInt());
-    entrada.nextLine();
-
-
-
-    return cliente;
+  public void agregarCliente(){
+    listAsesoria.add(Validacion.validarCliente());
   }
-  public Profesional agregarProfesional(){
 
-    Profesional profesional = new Profesional();
-    Scanner entrada = new Scanner(System.in);
-
-    System.out.println("Ingresa el nombre:");
-    profesional.setNombre(entrada.nextLine());
-
-    System.out.println("Ingresa Fecha Nacimiento:");
-    profesional.setFechaNacimiento(entrada.nextLine());
-
-    System.out.println("Ingresa run:");
-    profesional.setRun(entrada.nextInt());
-
-    entrada.nextLine();
-    System.out.println("Ingresa Titulo:");
-    profesional.setTitulo(entrada.nextLine());
-
-    System.out.println("Ingresa Fecha Ingreso:");
-    profesional.setFechaIngreso(entrada.nextLine());
-
-    return profesional;
+  public void agregarProfesional(){
+     listAsesoria.add(Validacion.validarProfesional());
   }
-  public Administrativo agregarAdministrativo(){
-
-    Administrativo administrativo = new Administrativo();
-    Scanner entrada = new Scanner(System.in);
-
-    System.out.println("Ingresa el nombre:");
-    administrativo.setNombre(entrada.nextLine());
-
-    System.out.println("Ingresa Fecha Nacimiento:");
-    administrativo.setFechaNacimiento(entrada.nextLine());
-
-    System.out.println("Ingresa run:");
-    administrativo.setRun(entrada.nextInt());
-
-    entrada.nextLine();
-    System.out.println("Ingresa Area:");
-    administrativo.setArea(entrada.nextLine());
-
-    System.out.println("Ingresa Experiencia");
-    administrativo.setExperiencia(entrada.nextLine());
-
-    return administrativo;
+  public void agregarAdministrativo(){
+    listAsesoria.add(Validacion.validarAdministrativo());
   }
-  public Capacitacion agregarCapacitacion(){
+  /*public Capacitacion agregarCapacitacion(){
 
     Capacitacion capacitacion = new Capacitacion();
     Scanner entrada = new Scanner(System.in);
@@ -175,32 +99,32 @@ public class Contenedor {
     String tipoUsuario = scanner.nextLine();
 
     for (IAsesoria asesoria : listAsesoria) {
-      if (tipoUsuario.equalsIgnoreCase("cliente") && asesoria instanceof Cliente) {
-        Cliente cliente = (Cliente) asesoria;
-        System.out.println("Rut: " + cliente.getRun());
-        System.out.println("Nombres: " + cliente.getNombres());
-        System.out.println("Apellidos: " + cliente.getApellidos());
-        System.out.println("Teléfono: " + cliente.getTelefono());
-        System.out.println("AFP: " + cliente.getAfp());
-        System.out.println("Sistema de Salud: " + cliente.getSistemaDeSalud());
-        System.out.println("Dirección: " + cliente.getDireccion());
-        System.out.println("Comuna: " + cliente.getComuna());
-        System.out.println("Edad: " + cliente.getEdad());
-      } else if (tipoUsuario.equalsIgnoreCase("profesional") && asesoria instanceof Profesional) {
-        Profesional profesional = (Profesional) asesoria;
-        System.out.println("Nombre: " + profesional.getNombre());
-        System.out.println("Fecha de Nacimiento: " + profesional.getFechaNacimiento());
-        System.out.println("Run: " + profesional.getRun());
-        System.out.println("Título: " + profesional.getTitulo());
-        System.out.println("Fecha de Ingreso: " + profesional.getFechaIngreso());
-      } else if (tipoUsuario.equalsIgnoreCase("administrativo") && asesoria instanceof Administrativo) {
-        Administrativo administrativo = (Administrativo) asesoria;
-        System.out.println("Nombre: " + administrativo.getNombre());
-        System.out.println("Fecha de Nacimiento: " + administrativo.getFechaNacimiento());
-        System.out.println("Run: " + administrativo.getRun());
-        System.out.println("Área: " + administrativo.getArea());
-        System.out.println("Experiencia: " + administrativo.getExperiencia());
-      }
+        if (tipoUsuario.equalsIgnoreCase("cliente") && asesoria instanceof Cliente) {
+          Cliente cliente = (Cliente) asesoria;
+          System.out.println("Rut: " + cliente.getRun());
+          System.out.println("Nombres: " + cliente.getNombres());
+          System.out.println("Apellidos: " + cliente.getApellidos());
+          System.out.println("Teléfono: " + cliente.getTelefono());
+          System.out.println("AFP: " + cliente.getAfp());
+          System.out.println("Sistema de Salud: " + cliente.getSistemaDeSalud());
+          System.out.println("Dirección: " + cliente.getDireccion());
+          System.out.println("Comuna: " + cliente.getComuna());
+          System.out.println("Edad: " + cliente.getEdad());
+        } else if (tipoUsuario.equalsIgnoreCase("profesional") && asesoria instanceof Profesional) {
+          Profesional profesional = (Profesional) asesoria;
+          System.out.println("Nombre: " + profesional.getNombre());
+          System.out.println("Fecha de Nacimiento: " + profesional.getFechaNacimiento());
+          System.out.println("Run: " + profesional.getRun());
+          System.out.println("Título: " + profesional.getTitulo());
+          System.out.println("Fecha de Ingreso: " + profesional.getFechaIngreso());
+        } else if (tipoUsuario.equalsIgnoreCase("administrativo") && asesoria instanceof Administrativo) {
+          Administrativo administrativo = (Administrativo) asesoria;
+          System.out.println("Nombre: " + administrativo.getNombre());
+          System.out.println("Fecha de Nacimiento: " + administrativo.getFechaNacimiento());
+          System.out.println("Run: " + administrativo.getRun());
+          System.out.println("Área: " + administrativo.getArea());
+          System.out.println("Experiencia: " + administrativo.getExperiencia());
+        }
     }
   }
 
@@ -272,6 +196,6 @@ public class Contenedor {
       System.out.println("No se encontró un usuario con el RUN especificado.");
     }
   }
-
+*/
 
 }

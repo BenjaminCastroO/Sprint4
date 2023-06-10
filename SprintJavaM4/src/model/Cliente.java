@@ -15,12 +15,19 @@ public class Cliente extends Usuario {
   private String comuna;
   private int edad;
 
-  public Cliente() {
+  public Cliente(String nombre, String fechaNacimiento, String nombres, String apellidos, int telefono, int edad) {
+    super(nombre, fechaNacimiento);
+    setNombres(nombres);
+    setApellidos(apellidos);
+    setTelefono(telefono);
+    setEdad(edad);
   }
 
-  public Cliente( int rut, String nombres, String apellidos, int telefono,
-                  String afp, int sistemaDeSalud, String direccion, String comuna,
-                  int edad) {
+  public Cliente(String nombre, String fechaNacimiento, int rut, String nombres,
+                 String apellidos, int telefono, String afp, int sistemaDeSalud,
+                 String direccion,
+                 String comuna, int edad) {
+    super(nombre, fechaNacimiento);
     setRut(rut);
     setNombres(nombres);
     setApellidos(apellidos);
