@@ -1,5 +1,5 @@
 package model;
-
+import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -170,7 +170,9 @@ public class Contenedor {
 
 
   public void listarUsuariosPorTipo(String tipoUsuario) {
-    System.out.println("Usuarios de tipo " + tipoUsuario + ":");
+    Scanner scanner = new Scanner(System.in);
+    System.out.println("Ingrese el tipo de usuario (cliente, profesional, administrativo):");
+    String tipoUsuario = scanner.nextLine();
 
     for (IAsesoria asesoria : listAsesoria) {
       if (tipoUsuario.equalsIgnoreCase("cliente") && asesoria instanceof Cliente) {
@@ -243,7 +245,33 @@ public class Contenedor {
     return null;
   }
 
+  public void eliminarUsuario() {
+    Scanner scanner = new Scanner(System.in);
+    System.out.println("Ingrese el RUN del usuario que desea eliminar:");
+    int run = scanner.nextInt();
 
+    IAsesoria usuarioEliminado = null;
+
+    for (IAsesoria asesoria : listAsesoria) {
+      if (asesoria instanceof Cliente && ((Cliente) asesoria).getRun() == run) {
+        usuarioEliminado = asesoria;
+        break;
+      } else if (asesoria instanceof Profesional && ((Profesional) asesoria).getRun() == run) {
+        usuarioEliminado = asesoria;
+        break;
+      } else if (asesoria instanceof Administrativo && ((Administrativo) asesoria).getRun() == run) {
+        usuarioEliminado = asesoria;
+        break;
+      }
+    }
+
+    if (usuarioEliminado != null) {
+      listAsesoria.remove(usuarioEliminado);
+      System.out.println("Usuario eliminado exitosamente.");
+    } else {
+      System.out.println("No se encontró un usuario con el RUN especificado.");
+    }
+  }
 
 
 }
