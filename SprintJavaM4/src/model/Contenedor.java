@@ -9,15 +9,53 @@ public class Contenedor {
   private List<IAsesoria> listAsesoria = new ArrayList<>();
   private List<Capacitacion> listCapacitaciones = new ArrayList<>();
 
-  public void almacenarCliente(){}
-  public void almacenarProfesional(){}
-  public void almacenarAdministrativo(){}
+
   public void almacenarCapacitacion(){}
   public void eliminarUsuario(){}
   public void listarUsuarios(){}
   public void listarUsuariosPorTipo(){}
   public void listarCapacitaciones(){}
 
+  private Cliente agregarCliente(){
+
+    Cliente cliente = new Cliente();
+    Scanner entrada = new Scanner(System.in);
+
+    System.out.println("Ingresa Rut:");
+    cliente.setRun(entrada.nextInt());
+    entrada.nextLine();
+
+    System.out.println("Ingresa el Nombres:");
+    cliente.setNombres(entrada.nextLine());
+
+    System.out.println("Ingresa el Apellido:");
+    cliente.setApellidos(entrada.nextLine());
+
+    System.out.println("Ingresa Telefono:");
+    cliente.setTelefono(entrada.nextInt());
+    entrada.nextLine();
+
+    System.out.println("Ingresa AFP:");
+    cliente.setAfp(entrada.nextLine());
+
+    System.out.println("Ingresa Sistema Salud (1.FONASA - 2. ISAPRE):");
+    cliente.setSistemaDeSalud(entrada.nextInt());
+    entrada.nextLine();
+
+    System.out.println("Ingresa Dirección:");
+    cliente.setDireccion(entrada.nextLine());
+
+    System.out.println("Ingresa Comuna:");
+    cliente.setComuna(entrada.nextLine());
+
+    System.out.println("Ingresa Edad:");
+    cliente.setEdad(entrada.nextInt());
+    entrada.nextLine();
+
+
+
+    return cliente;
+  }
   private Profesional agregarProfesional(){
 
     Profesional profesional = new Profesional();
@@ -97,4 +135,6 @@ public class Contenedor {
 
     return capacitacion;
   }
+
+  
 }
