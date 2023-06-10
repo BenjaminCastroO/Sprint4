@@ -9,7 +9,40 @@ import java.util.Scanner;
 public class Validacion {
 
   public static Administrativo validarAdministrativo(){
-    Usuario user = validarUsuario();
+    String nombre;
+    String fechaNacimiento = "";
+    int rut;
+    boolean valido = true;
+    do {
+      nombre = leerTexto("Ingresa el nombre del administrativo:");
+      if (!(nombre.length() >= 10 && nombre.length() <= 50))
+        System.out.println("El nombre debe tener entre 10 y 50 caracteres");
+    } while (!(nombre.length() >= 10 && nombre.length() <= 50));
+
+    do {
+      valido = true;
+      SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+      dateFormat.setLenient(false);  // no permite fechas inválidas
+      try {
+        fechaNacimiento = leerTexto("Ingrese la fecha de nacimiento del " +
+                "administrativo:");
+        fechaNacimiento =
+                String.valueOf(dateFormat.parse(fechaNacimiento).toLocaleString());
+      } catch (Exception e) {
+        System.out.println("La fecha de nacimiento debe estar en el formato " +
+                "DD/MM/AAAA.");
+        valido = false;
+      }
+    } while (!valido);
+
+    Usuario user = new Usuario(nombre,fechaNacimiento);
+    do {
+      rut = leerNum("Ingresa el rut del administrativo:");
+      if (!(rut < 99999999))
+        System.out.println("El RUN debe ser menor a 99.999.999");
+    } while (!(rut < 99999999));
+    if (rut != 0) user.setRun(rut);
+
     String area;
     String experiencia;
 
@@ -38,10 +71,42 @@ public class Validacion {
   }
 
   public static Profesional validarProfesional(){
-    Usuario user = validarUsuario();
+    String nombre;
+    String fechaNacimiento = "";
+    int rut;
+    boolean valido = true;
+    do {
+      nombre = leerTexto("Ingresa el nombre del profesional:");
+      if (!(nombre.length() >= 10 && nombre.length() <= 50))
+        System.out.println("El nombre debe tener entre 10 y 50 caracteres");
+    } while (!(nombre.length() >= 10 && nombre.length() <= 50));
+
+    do {
+      valido = true;
+      SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+      dateFormat.setLenient(false);  // no permite fechas inválidas
+      try {
+        fechaNacimiento = leerTexto("Ingrese la fecha de nacimiento del " +
+                "profesional:");
+        fechaNacimiento =
+                String.valueOf(dateFormat.parse(fechaNacimiento).toLocaleString());
+      } catch (Exception e) {
+        System.out.println("La fecha de nacimiento debe estar en el formato " +
+                "DD/MM/AAAA.");
+        valido = false;
+      }
+    } while (!valido);
+
+    Usuario user = new Usuario(nombre,fechaNacimiento);
+    do {
+      rut = leerNum("Ingresa el rut del profesional:");
+      if (!(rut < 99999999))
+        System.out.println("El RUN debe ser menor a 99.999.999");
+    } while (!(rut < 99999999));
+    if (rut != 0) user.setRun(rut);
+
     String titulo;
     String fechaIngreso;
-    boolean valido = true;
     do{
       titulo = leerTexto("Ingresa el título del profesional:");
       if (!(titulo.length() >=10 && titulo.length()<=50))
@@ -76,17 +141,9 @@ public class Validacion {
   }
 
   public static Cliente  validarCliente(){
-    Usuario user = validarUsuario();
-    int rut;
     String nombres;
-    String apellidos;
-    int telefono;
-    String afp;
-    int sistemaDeSalud;
-    String comuna;
-    String direccion;
-    int edad;
-    String num;
+    String fechaNacimiento = "";
+    int rut;
     boolean valido = true;
 
     do {
@@ -95,6 +152,42 @@ public class Validacion {
         System.out.println("Los nombres ingresados deben tener " +
                 "como mínimo 5 caracteres y 30 como máximo.");
     } while (!(nombres.length() >= 5 && nombres.length() <= 30));
+
+    do {
+      valido = true;
+      SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+      dateFormat.setLenient(false);  // no permite fechas inválidas
+      try {
+        fechaNacimiento = leerTexto("Ingrese la fecha de nacimiento del " +
+                "usuario:");
+        fechaNacimiento =
+                String.valueOf(dateFormat.parse(fechaNacimiento).toLocaleString());
+      } catch (Exception e) {
+        System.out.println("La fecha de nacimiento debe estar en el formato " +
+                "DD/MM/AAAA.");
+        valido = false;
+      }
+    } while (!valido);
+
+    Usuario user = new Usuario(nombres,fechaNacimiento);
+
+    do {
+      rut = leerNum("Opcional! Ingresa el rut del usuario:");
+      if (!(rut < 99999999)) {
+        System.out.println("El RUN debe ser menor a 99.999.999");
+      }
+    } while (!(rut < 99999999));
+    if (!(rut == 0))
+      user.setRun(rut);
+
+    String apellidos;
+    int telefono;
+    String afp;
+    int sistemaDeSalud;
+    String comuna;
+    String direccion;
+    int edad;
+    String num;
 
     do {
       apellidos = leerTexto("Ingresa los apellidos del usuario:");
@@ -121,15 +214,6 @@ public class Validacion {
             nombres,apellidos,telefono,edad);
     if (user.getRun() != 0)
       clie.setRun(user.getRun());
-
-    do {
-      rut = leerNum("Opcional! Ingresa el rut del usuario:");
-      if (!(rut < 99999999)) {
-        System.out.println("El RUN debe ser menor a 99.999.999");
-      }
-    } while (!(rut < 99999999));
-    if (!(rut == 0))
-      clie.setRut(rut);
 
     if (deseaIngresar("afp")) {
       do {
