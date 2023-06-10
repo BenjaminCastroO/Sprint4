@@ -217,7 +217,7 @@ public class Validacion {
   }
 
 
-  public static void validarCapacitacion() {
+  public static Capacitacion validarCapacitacion() {
     int id;
     int rut;
     String dia;
@@ -253,46 +253,54 @@ public class Validacion {
       }
     } while (cantAsistentes < 1000 && cantAsistentes > -1);
 
-    Capacitacion cap = new Capacitacion()
+    Capacitacion cap = new Capacitacion(id,rut,lugar,cantAsistentes);
 
-    do {
-      valido = true;
-      dia = leerTexto("Ingresa el día de la semana:");
-      if(!(dia.equalsIgnoreCase("lunes") || dia.equalsIgnoreCase("martes") ||
-              dia.equalsIgnoreCase("miercoles") || dia.equalsIgnoreCase("jueves") ||
-              dia.equalsIgnoreCase("viernes") || dia.equalsIgnoreCase("sabado") ||
-              dia.equalsIgnoreCase("domingo"))) {
-        System.out.println("Ingrese un día de la semana válido,"
-                + " (lunes, martes, miercoles, jueves, viernes, sabado, domingo).");
-        valido = false;
-      }
-      else dia = dia.toLowerCase();
-    } while (!valido);
+    if(deseaIngresar("día de la semana")) {
+      do {
+        valido = true;
+        dia = leerTexto("Ingresa el día de la semana:");
+        if (!(dia.equalsIgnoreCase("lunes") || dia.equalsIgnoreCase("martes") ||
+                dia.equalsIgnoreCase("miercoles") || dia.equalsIgnoreCase("jueves") ||
+                dia.equalsIgnoreCase("viernes") || dia.equalsIgnoreCase("sabado") ||
+                dia.equalsIgnoreCase("domingo"))) {
+          System.out.println("Ingrese un día de la semana válido,"
+                  + " (lunes, martes, miercoles, jueves, viernes, sabado, domingo).");
+          valido = false;
+        } else dia = dia.toLowerCase();
+      } while (!valido);
+      cap.setDia(dia);
+    }
 
-    do{
-      valido = true;
-      hora = leerTexto("Ingrese la hora de la capacitación en formato HH:mm");
-      DateTimeFormatter tiempo = DateTimeFormatter.ofPattern("HH:mm");
-      try {
-        LocalTime horalocal = LocalTime.parse(hora,tiempo);
-        hora = String.valueOf(horalocal);
-      } catch (DateTimeParseException e) {
-        System.out.println("La Hora debe estar ingresada en el " +
-                 "formato HH:mm ");
-        valido = false;
-      }
-    } while (!valido);
+    if(deseaIngresar("hora")) {
+      do {
+        valido = true;
+        hora = leerTexto("Ingrese la hora de la capacitación en formato HH:mm");
+        DateTimeFormatter tiempo = DateTimeFormatter.ofPattern("HH:mm");
+        try {
+          LocalTime horalocal = LocalTime.parse(hora, tiempo);
+          hora = String.valueOf(horalocal);
+        } catch (DateTimeParseException e) {
+          System.out.println("La Hora debe estar ingresada en el " +
+                  "formato HH:mm ");
+          valido = false;
+        }
+      } while (!valido);
+      cap.setHora(hora);
+    }
 
-    do {
-      duracion = leerNum("Ingresa la duración en minutos de la " +
-               "capacitación:");
-      if (!(duracion <= 70)) {
-         System.out.println("La información ingresada en " +
-                 "duración debe tener menos de 71 caracteres.");
-       }
-    } while (!(duracion <= 70));
+    if (deseaIngresar("duración")) {
+      do {
+        duracion = leerNum("Ingresa la duración en minutos de la " +
+                "capacitación:");
+        if (!(duracion <= 70)) {
+          System.out.println("La información ingresada en " +
+                  "duración debe tener menos de 71 caracteres.");
+        }
+      } while (!(duracion <= 70));
+    cap.setDuracion(duracion);
+    }
 
-
+    return cap;
   }
 
 

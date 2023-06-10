@@ -17,6 +17,7 @@ public class Menu {
         System.out.println("6. Listar Todos los Usuarios");
         System.out.println("7. Listar Usuarios por Tipo");
         System.out.println("8. Listar Capacitaciones");
+        System.out.println("9. utilizar datos precargados.");
         System.out.println("0. Salir");
         System.out.println("---------------------------");
     }
@@ -36,7 +37,7 @@ public class Menu {
             op = opcionDeMenu();
             switch (op){
                 case 1: {
-                  //  contenedor.agregarCliente();
+                    contenedor.agregarCliente();
                     break;
                 }
                 case 2: {
@@ -48,23 +49,27 @@ public class Menu {
                     break;
                 }
                 case 4: {
-                 //   contenedor.agregarCapacitacion();
+                    contenedor.agregarCapacitacion();
                     break;
                 }
                 case 5: {
-                  //  contenedor.eliminarUsuario();
+                    contenedor.eliminarUsuario();
                     break;
                 }
                 case 6: {
-                   // contenedor.listarUsuarios();
+                    contenedor.listarUsuarios();
                     break;
                 }
                 case 7: {
-                    //contenedor.listarUsuariosPorTipo();
+                    contenedor.listarUsuariosPorTipo();
                     break;
                 }
                 case 8: {
-                   // contenedor.listarCapacitaciones();
+                    contenedor.listarCapacitaciones();
+                    break;
+                }
+                case 9: {
+                    contenedor.iniciarConDatos();
                     break;
                 }
 

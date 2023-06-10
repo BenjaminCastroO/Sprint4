@@ -18,8 +18,11 @@ public class Capacitacion {
   private int duracion;
   private int cantAsistentes;
 
-  public Capacitacion() {
-
+  public Capacitacion(int id, int rut, String lugar, int cantAsistentes) {
+    this.id = id;
+    this.rut = rut;
+    this.lugar = lugar;
+    this.cantAsistentes = cantAsistentes;
   }
 
   public Capacitacion(int id, int rut, String dia, String hora, String lugar,

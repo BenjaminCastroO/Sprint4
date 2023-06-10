@@ -20,78 +20,17 @@ public class Contenedor {
   public void agregarAdministrativo(){
     listAsesoria.add(Validacion.validarAdministrativo());
   }
-  /*public Capacitacion agregarCapacitacion(){
-
-    Capacitacion capacitacion = new Capacitacion();
-    Scanner entrada = new Scanner(System.in);
-
-    System.out.println("Ingresa el Id Capacitación:");
-    capacitacion.setId(entrada.nextInt());
-    entrada.nextLine();
-
-    System.out.println("Ingresa el RUT:");
-    capacitacion.setRut(entrada.nextInt());
-    entrada.nextLine();
-
-    System.out.println("Ingresa Fecha Capacitacion:");
-    capacitacion.setDia(entrada.nextLine());
-
-    System.out.println("Ingresa Hora Capacitacion:");
-    capacitacion.setHora(entrada.nextLine());
-
-    System.out.println("Ingresa Lugar Capacitacion:");
-    capacitacion.setLugar(entrada.nextLine());
-
-    System.out.println("Ingresa Duración:");
-    capacitacion.setDuracion(entrada.nextInt());
-    entrada.nextLine();
-
-    System.out.println("Ingresa Cantidad Asistentes:");
-    capacitacion.setRut(entrada.nextInt());
-    entrada.nextLine();
-
-
-    return capacitacion;
+  public void agregarCapacitacion(){
+    listCapacitaciones.add(Validacion.validarCapacitacion());
   }
 
 
   public void listarUsuarios() {
     System.out.println("Lista de usuarios:");
     for (IAsesoria asesoria : listAsesoria) {
-      if (asesoria instanceof Cliente) {
-        Cliente cliente = (Cliente) asesoria;
-        System.out.println("Cliente: " + cliente.getNombres() + cliente.getApellidos());
-        System.out.println("RUT: " + cliente.getRun());
-        System.out.println("Teléfono: " + cliente.getTelefono());
-        System.out.println("AFP: " + cliente.getAfp());
-        System.out.println("Sistema de Salud: " + cliente.getSistemaDeSalud());
-        System.out.println("Dirección: " + cliente.getDireccion());
-        System.out.println("Comuna: " + cliente.getComuna());
-        System.out.println("Edad: " + cliente.getEdad());
-      }else if (asesoria instanceof Profesional) {
-          Cliente cliente = (Cliente) asesoria;
-          System.out.println("Cliente: " + cliente.getNombres() + cliente.getApellidos());
-          System.out.println("RUT: " + cliente.getRun());
-          System.out.println("Teléfono: " + cliente.getTelefono());
-          System.out.println("AFP: " + cliente.getAfp());
-          System.out.println("Sistema de Salud: " + cliente.getSistemaDeSalud());
-          System.out.println("Dirección: " + cliente.getDireccion());
-          System.out.println("Comuna: " + cliente.getComuna());
-          System.out.println("Edad: " + cliente.getEdad());
-        } else if (asesoria instanceof Administrativo) {
-        Cliente cliente = (Cliente) asesoria;
-        System.out.println("Cliente: " + cliente.getNombres() + cliente.getApellidos());
-        System.out.println("RUT: " + cliente.getRun());
-        System.out.println("Teléfono: " + cliente.getTelefono());
-        System.out.println("AFP: " + cliente.getAfp());
-        System.out.println("Sistema de Salud: " + cliente.getSistemaDeSalud());
-        System.out.println("Dirección: " + cliente.getDireccion());
-        System.out.println("Comuna: " + cliente.getComuna());
-        System.out.println("Edad: " + cliente.getEdad());
+        asesoria.analizarUsuario();
       }
     }
-  }
-
 
   public void listarUsuariosPorTipo() {
     Scanner scanner = new Scanner(System.in);
@@ -100,30 +39,11 @@ public class Contenedor {
 
     for (IAsesoria asesoria : listAsesoria) {
         if (tipoUsuario.equalsIgnoreCase("cliente") && asesoria instanceof Cliente) {
-          Cliente cliente = (Cliente) asesoria;
-          System.out.println("Rut: " + cliente.getRun());
-          System.out.println("Nombres: " + cliente.getNombres());
-          System.out.println("Apellidos: " + cliente.getApellidos());
-          System.out.println("Teléfono: " + cliente.getTelefono());
-          System.out.println("AFP: " + cliente.getAfp());
-          System.out.println("Sistema de Salud: " + cliente.getSistemaDeSalud());
-          System.out.println("Dirección: " + cliente.getDireccion());
-          System.out.println("Comuna: " + cliente.getComuna());
-          System.out.println("Edad: " + cliente.getEdad());
+          asesoria.analizarUsuario();
         } else if (tipoUsuario.equalsIgnoreCase("profesional") && asesoria instanceof Profesional) {
-          Profesional profesional = (Profesional) asesoria;
-          System.out.println("Nombre: " + profesional.getNombre());
-          System.out.println("Fecha de Nacimiento: " + profesional.getFechaNacimiento());
-          System.out.println("Run: " + profesional.getRun());
-          System.out.println("Título: " + profesional.getTitulo());
-          System.out.println("Fecha de Ingreso: " + profesional.getFechaIngreso());
+          asesoria.analizarUsuario();
         } else if (tipoUsuario.equalsIgnoreCase("administrativo") && asesoria instanceof Administrativo) {
-          Administrativo administrativo = (Administrativo) asesoria;
-          System.out.println("Nombre: " + administrativo.getNombre());
-          System.out.println("Fecha de Nacimiento: " + administrativo.getFechaNacimiento());
-          System.out.println("Run: " + administrativo.getRun());
-          System.out.println("Área: " + administrativo.getArea());
-          System.out.println("Experiencia: " + administrativo.getExperiencia());
+          asesoria.analizarUsuario();
         }
     }
   }
@@ -196,6 +116,58 @@ public class Contenedor {
       System.out.println("No se encontró un usuario con el RUN especificado.");
     }
   }
-*/
 
+  public void iniciarConDatos(){
+    Usuario user1 = new Usuario("Benjamín Castro","07/07/1997",11223344);
+    Usuario user2 = new Usuario("Pedro Díaz","10/10/1990",123123);
+    Usuario user3 = new Usuario("Gonzalo Mercado","31/03/1985",654321);
+    Cliente clie1 =
+            new Cliente("eduardo andres", "11/02/1996",12345,"Eduardo Andrés",
+                    "Cavieres Alcayaga", 56971783,"afp modelo",
+                    1,"el alazan " + "77","Quilpué",25);
+    Cliente clie2 =
+            new Cliente("Margot javiera", "12/06/2034",54321,"Margot Javiera",
+                    "Alcaino Betancourt", 56911111,"afp plan vital",2,
+                    "una dirección que no existe","Santiago", 33);
+    Cliente clie3 =
+            new Cliente("Arón francisco", "11/06/1992",98990,"Aron Francisco",
+                    "Ormeño " +
+                            "Vidal",
+                    56922222,"afp chanta",1,"el mercado 8766","Ancud",77);
+    Administrativo admin1 = new Administrativo("juan pedro segundo", "07/12" +
+            "/1980","Tecnología y comunicaciones", "15 años como secretario del equipo de telecomunicaciones");
+
+    Administrativo admin2 = new Administrativo("Alin victoria", "25/12/1998",
+            "Departamento de ventas");
+    Administrativo admin3 = new Administrativo("Elmo jonse","12/12/2012",
+            "Capacitacion y formación continua", "Lidera el equipo de diseño de capacitaciones");
+    Profesional prof1 = new Profesional("Pablo toledo","15/03/2001",445552,
+            "Capacitador", "17/12/2016");
+    Profesional prof2 = new Profesional("Valentin Dante","23/06/1999",77331,
+            "Asistente", "12/02/2010");
+    Profesional prof3 = new Profesional("Pablo toledo","07/11/2011",99226,
+            "Prevencionista de riesgo", "28/01/2013");
+
+    Capacitacion cap1 = new Capacitacion(1,12,"lunes","12:39","casa jejejej",12,
+            33);
+    Capacitacion cap2 = new Capacitacion(1,12,"lunes","12:39","casa jejejej",12,
+            33);
+    Capacitacion cap3 = new Capacitacion(1,12,"lunes","12:39","casa jejejej",12,
+            33);
+    listAsesoria.add(user1);
+    listAsesoria.add(user2);
+    listAsesoria.add(user3);
+    listAsesoria.add(clie1);
+    listAsesoria.add(clie2);
+    listAsesoria.add(clie3);
+    listAsesoria.add(admin1);
+    listAsesoria.add(admin2);
+    listAsesoria.add(admin3);
+    listAsesoria.add(prof1);
+    listAsesoria.add(prof2);
+    listAsesoria.add(prof3);
+    listCapacitaciones.add(cap1);
+    listCapacitaciones.add(cap2);
+    listCapacitaciones.add(cap3);
+  }
 }
