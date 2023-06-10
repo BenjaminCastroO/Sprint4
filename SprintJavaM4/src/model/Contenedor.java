@@ -16,7 +16,7 @@ public class Contenedor {
   public void listarUsuariosPorTipo(){}
   public void listarCapacitaciones(){}
 
-  private Cliente agregarCliente(){
+  public Cliente agregarCliente(){
 
     Cliente cliente = new Cliente();
     Scanner entrada = new Scanner(System.in);
@@ -56,7 +56,7 @@ public class Contenedor {
 
     return cliente;
   }
-  private Profesional agregarProfesional(){
+  public Profesional agregarProfesional(){
 
     Profesional profesional = new Profesional();
     Scanner entrada = new Scanner(System.in);
@@ -79,7 +79,7 @@ public class Contenedor {
 
     return profesional;
   }
-  private Administrativo agregarAdministrativo(){
+  public Administrativo agregarAdministrativo(){
 
     Administrativo administrativo = new Administrativo();
     Scanner entrada = new Scanner(System.in);
@@ -102,7 +102,7 @@ public class Contenedor {
 
     return administrativo;
   }
-  private Capacitacion agregarCapacitacion(){
+  public Capacitacion agregarCapacitacion(){
 
     Capacitacion capacitacion = new Capacitacion();
     Scanner entrada = new Scanner(System.in);
@@ -136,5 +136,5 @@ public class Contenedor {
     return capacitacion;
   }
 
-  
+
 }

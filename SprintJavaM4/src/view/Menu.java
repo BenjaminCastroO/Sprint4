@@ -1,5 +1,7 @@
 package view;
 
+import model.Contenedor;
+
 import java.util.Scanner;
 
 public class Menu {
@@ -26,6 +28,7 @@ public class Menu {
 
     public void entregaMenu() {
         int op;
+        Contenedor contenedor = new Contenedor();
 
         do {
             muestraMenu();
@@ -33,19 +36,19 @@ public class Menu {
             op = opcionDeMenu();
             switch (op){
                 case 1: {
-                    //agregarCliente();
+                    contenedor.agregarCliente();
                     break;
                 }
                 case 2: {
-                    //agregarProfesional();
+                    contenedor.agregarProfesional();
                     break;
                 }
                 case 3: {
-                    //agregarAdministrativo();
+                    contenedor.agregarAdministrativo();
                     break;
                 }
                 case 4: {
-                    //agregarCapacitacion();
+                    contenedor.agregarCapacitacion();
                     break;
                 }
                 case 5: {
@@ -66,7 +69,7 @@ public class Menu {
                 }
 
                 case 0: {
-                    System.out.println("Saliendo Sistema");
+                    System.out.println("Saliendo del Sistema");
                     break;
                 }
                 default: {
