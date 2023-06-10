@@ -1,10 +1,11 @@
 import model.*;
+import view.Menu;
 
 import java.sql.Date;
 public class Main {
   public static void main(String[] args) {
 
-    Usuario user1 = new Usuario("Benjamín Castro","07/07/1997",11223344);
+    /*Usuario user1 = new Usuario("Benjamín Castro","07/07/1997",11223344);
     Usuario user2 = new Usuario("Pedro Díaz","10/10/1990",123123);
     Usuario user3 = new Usuario("Gonzalo Mercado","31/03/1985",654321);
     Cliente clie1 = new Cliente(12345,"Eduardo Andrés", "Cavieres Alcayaga",
@@ -36,6 +37,9 @@ public class Main {
     Capacitacion cap3 = new Capacitacion(1,12,"lunes","12:39","casa jejejej",12,
             33);
 
-    System.out.println(cap1.mostrarDetalle());
+    System.out.println(cap1.mostrarDetalle());*/
+    Menu menu = new Menu();
+    menu.entregaMenu();
+
   }
 }

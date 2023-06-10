@@ -169,7 +169,7 @@ public class Contenedor {
   }
 
 
-  public void listarUsuariosPorTipo(String tipoUsuario) {
+  public void listarUsuariosPorTipo() {
     Scanner scanner = new Scanner(System.in);
     System.out.println("Ingrese el tipo de usuario (cliente, profesional, administrativo):");
     String tipoUsuario = scanner.nextLine();

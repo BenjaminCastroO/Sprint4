@@ -52,7 +52,7 @@ public class Menu {
                     break;
                 }
                 case 5: {
-                    //contenedor.eliminarUsuario();
+                    contenedor.eliminarUsuario();
                     break;
                 }
                 case 6: {
