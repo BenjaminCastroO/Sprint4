@@ -2,6 +2,8 @@ package model;
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.List;
+import java.lang.String;
+import model.Cliente;
 import java.util.Scanner;
 import  model.Profesional;
 public class Contenedor {
@@ -97,13 +99,13 @@ public class Contenedor {
     IAsesoria usuarioEliminado = null;
 
     for (IAsesoria asesoria : listAsesoria) {
-      if (asesoria instanceof Cliente && ((Cliente) asesoria).getRun() == run) {
+      if ((asesoria instanceof Cliente) && (((Cliente) asesoria).getRun() == run)) {
         usuarioEliminado = asesoria;
         break;
-      } else if (asesoria instanceof Profesional && ((Profesional) asesoria).getRun() == run) {
+      } else if ((asesoria instanceof Profesional) && (((Profesional) asesoria).getRun() == run)) {
         usuarioEliminado = asesoria;
         break;
-      } else if (asesoria instanceof Administrativo && ((Administrativo) asesoria).getRun() == run) {
+      } else if ((asesoria instanceof Administrativo) && (((Administrativo) asesoria).getRun() == run)) {
         usuarioEliminado = asesoria;
         break;
       }
@@ -121,39 +123,27 @@ public class Contenedor {
     Usuario user1 = new Usuario("Benjamín Castro","07/07/1997",11223344);
     Usuario user2 = new Usuario("Pedro Díaz","10/10/1990",123123);
     Usuario user3 = new Usuario("Gonzalo Mercado","31/03/1985",654321);
-    Cliente clie1 =
-            new Cliente("eduardo andres", "11/02/1996",12345,"Eduardo Andrés",
-                    "Cavieres Alcayaga", 56971783,"afp modelo",
-                    1,"el alazan " + "77","Quilpué",25);
-    Cliente clie2 =
-            new Cliente("Margot javiera", "12/06/2034",54321,"Margot Javiera",
-                    "Alcaino Betancourt", 56911111,"afp plan vital",2,
-                    "una dirección que no existe","Santiago", 33);
-    Cliente clie3 =
-            new Cliente("Arón francisco", "11/06/1992",98990,"Aron Francisco",
-                    "Ormeño " +
-                            "Vidal",
-                    56922222,"afp chanta",1,"el mercado 8766","Ancud",77);
-    Administrativo admin1 = new Administrativo("juan pedro segundo", "07/12" +
-            "/1980","Tecnología y comunicaciones", "15 años como secretario del equipo de telecomunicaciones");
-
-    Administrativo admin2 = new Administrativo("Alin victoria", "25/12/1998",
-            "Departamento de ventas");
-    Administrativo admin3 = new Administrativo("Elmo jonse","12/12/2012",
+    Cliente clie1 = new Cliente("eduardo andres", "11/02/1996",12345,12345,"Eduardo Andrés", "Cavieres Alcayaga", 56971783,"afp modelo", 1,"el alazan " + "77","Quilpué",25);
+    Cliente clie2 = new Cliente("Margot javiera", "12/06/2034",54321,54321,"Margot Javiera", "Alcaino Betancourt", 56911111,"afp plan vital",2, "una dirección que no existe","Santiago", 33);
+    Cliente clie3 = new Cliente("Arón francisco", "11/06/1992",98990,98990,"Aron Francisco", "Ormeño " + "Vidal", 56922222,"afp chanta",1,"el mercado 8766","Ancud",77);
+    Administrativo admin1 = new Administrativo("juan pedro segundo", "07/12/1980",8888,"Tecnología y comunicaciones", "15 años como secretario del equipo de telecomunicaciones");
+    Administrativo admin2 = new Administrativo("Alin victoria", "25/12/1998",7777,
+            "Departamento de ventas","Trainee");
+    Administrativo admin3 = new Administrativo("Elmo joselo","12/12/2012",9999,
             "Capacitacion y formación continua", "Lidera el equipo de diseño de capacitaciones");
     Profesional prof1 = new Profesional("Pablo toledo","15/03/2001",445552,
             "Capacitador", "17/12/2016");
     Profesional prof2 = new Profesional("Valentin Dante","23/06/1999",77331,
-            "Asistente", "12/02/2010");
+            "Asistente Administrativo", "12/02/2010");
     Profesional prof3 = new Profesional("Pablo toledo","07/11/2011",99226,
             "Prevencionista de riesgo", "28/01/2013");
 
-    Capacitacion cap1 = new Capacitacion(1,12,"lunes","12:39","casa jejejej",12,
-            33);
-    Capacitacion cap2 = new Capacitacion(1,12,"lunes","12:39","casa jejejej",12,
-            33);
-    Capacitacion cap3 = new Capacitacion(1,12,"lunes","12:39","casa jejejej",12,
-            33);
+    Capacitacion cap1 = new Capacitacion(1,12,"lunes","12:39","Salon de Eventos",12,
+            30);
+    Capacitacion cap2 = new Capacitacion(2,12,"martes","12:50","casa de juan",12,
+            20);
+    Capacitacion cap3 = new Capacitacion(3,12,"lunes","16:39","casa jejejej",12,
+            15);
     listAsesoria.add(user1);
     listAsesoria.add(user2);
     listAsesoria.add(user3);

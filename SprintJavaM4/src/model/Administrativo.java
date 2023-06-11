@@ -1,4 +1,5 @@
 package model;
+import java.lang.String;
 
 import java.sql.Date;
 
@@ -11,8 +12,8 @@ public class Administrativo extends Usuario{
     this.area = area;
   }
 
-  public Administrativo(String nombre, String fechaNacimiento, String area, String experiencia) {
-    super(nombre, fechaNacimiento);
+  public Administrativo(String nombre, String fechaNacimiento,int run, String area, String experiencia) {
+    super(nombre, fechaNacimiento, run);
     this.area = area;
     this.experiencia = experiencia;
   }

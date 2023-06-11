@@ -144,7 +144,7 @@ public class Validacion {
 
     if (deseaIngresar("sistema de salud")) {
       do {
-        num = leerTexto("Ingresa el sistema de salud del cliente:");
+        num = leerTexto("Ingresa el sistema de salud del cliente (1.FONASA - 2.ISAPRE:");
         if (!(num.equals("1") || num.equals("2"))) {
           System.out.println("El sistema de salud debe ser FONASA" +
                   "(1) o ISAPRE(2)");

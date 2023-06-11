@@ -1,5 +1,5 @@
 package model;
-
+import java.lang.String;
 import java.sql.Date;
 public class Cliente extends Usuario {
   public final int FONASA = 1;
@@ -23,11 +23,11 @@ public class Cliente extends Usuario {
     setEdad(edad);
   }
 
-  public Cliente(String nombre, String fechaNacimiento, int rut, String nombres,
+  public Cliente(String nombre, String fechaNacimiento, int run, int rut, String nombres,
                  String apellidos, int telefono, String afp, int sistemaDeSalud,
                  String direccion,
                  String comuna, int edad) {
-    super(nombre, fechaNacimiento);
+    super(nombre, fechaNacimiento, run);
     setRut(rut);
     setNombres(nombres);
     setApellidos(apellidos);

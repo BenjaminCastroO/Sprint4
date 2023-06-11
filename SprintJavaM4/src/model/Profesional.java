@@ -3,6 +3,7 @@ package model;
 import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.lang.String;
 
 public class Profesional extends Usuario{
     private String titulo;
@@ -36,13 +37,11 @@ public class Profesional extends Usuario{
     }
 
     public void setFechaIngreso(String fechaIngreso) {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-        dateFormat.setLenient(false);  // no permite fechas inválidas
-        try {
-            this.fechaIngreso = String.valueOf((Date) dateFormat.parse(fechaIngreso));
-        } catch (ParseException e) {
-            throw new IllegalArgumentException("La fecha de Ingreso debe estar en el formato DD/MM/AAAA.");
-        }
+        this.fechaIngreso = fechaIngreso;
+    }
+    public void analizarUsuario(){
+        super.analizarUsuario();
+        System.out.println("Titulo = '" + titulo + '\'' + ", Fecha de Ingreso = " + fechaIngreso);
     }
 
     @Override
