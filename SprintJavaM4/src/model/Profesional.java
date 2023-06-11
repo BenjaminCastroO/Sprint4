@@ -37,7 +37,15 @@ public class Profesional extends Usuario{
     }
 
     public void setFechaIngreso(String fechaIngreso) {
-        this.fechaIngreso = fechaIngreso;
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+            dateFormat.setLenient(false);  // no permite fechas inválidas
+            this.fechaIngreso = fechaIngreso;
+                try {
+                    this.fechaIngreso =
+                            String.valueOf(dateFormat.parse(fechaIngreso).toLocaleString());
+                } catch (Exception e) {
+                    System.out.println("La fecha de ingreso debe estar en el formato " +
+                            "DD/MM/AAAA.");}
     }
     public void analizarUsuario(){
         super.analizarUsuario();
