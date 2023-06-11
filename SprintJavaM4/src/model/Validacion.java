@@ -125,7 +125,7 @@ public class Validacion {
               "profesional:");
       if (!(fechaIngreso.isEmpty())) {
         try {
-          fechaIngreso =
+
                   String.valueOf(dateFormat.parse(fechaIngreso).toLocaleString());
         } catch (Exception e) {
           System.out.println("La fecha de ingreso debe estar en el formato " +
