@@ -6,7 +6,8 @@ import java.text.SimpleDateFormat;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
-
+import java.util.ArrayList;
+import java.util.List;
 
 
 //Estamos en break 21:06 -> 21:20
@@ -21,10 +22,14 @@ public class VisitaTerreno {
     private String horaVisita;
     private String lugarVisita;
     private String comentario;
+    private List<Revision> revisiones = new ArrayList<>();
 
     public VisitaTerreno() {
     }
-
+    //Una visita en terreno debe tener una o más revisiones por cada ocasión
+public void agregarRevision(Revision revision){
+        revisiones.add(revision);
+}
     public VisitaTerreno(int idVisita, int rut, String diaVisita, String horaVisita, String lugarVisita, String comentario) {
         setIdVisita(idVisita);
         this.rut = rut;

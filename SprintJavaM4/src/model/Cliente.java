@@ -1,6 +1,9 @@
 package model;
 import java.lang.String;
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
+import model.VisitaTerreno;
 public class Cliente extends Usuario {
   public final int FONASA = 1;
   public final int ISAPRE = 2;
@@ -14,6 +17,8 @@ public class Cliente extends Usuario {
   private String direccion;
   private String comuna;
   private int edad;
+  private List<Accidente> accidentes = new ArrayList<>();
+  private List<VisitaTerreno> visitasTerreno = new ArrayList<>();
 
   public Cliente(String nombre, String fechaNacimiento, String nombres, String apellidos, int telefono, int edad) {
     super(nombre, fechaNacimiento);
@@ -38,9 +43,17 @@ public class Cliente extends Usuario {
     setAfp(afp);
     setSistemaDeSalud(sistemaDeSalud);
   }
+  //Un cliente debe tener una o muchas visitas en terreno
+  public void agregarVisita(VisitaTerreno visitaTerreno){
+    visitasTerreno.add(visitaTerreno);
+  }
+  //Un cliente puede registrar ninguno o muchos accidentes
+  public void agregarAccidente(Accidente accidente){
+    accidentes.add(accidente);
+  }
 
-  public String obtenerNombre(){
-    return (nombres +  " " + apellidos);
+  public String obtenerNombre() {
+    return (nombres + " " + apellidos);
   }
 
   public String obtenerSistemaSalud() {
@@ -86,7 +99,7 @@ public class Cliente extends Usuario {
   }
 
   public void setTelefono(int telefono) {
-    if ((telefono== 0))
+    if ((telefono == 0))
       throw new IllegalArgumentException("El telefono no puede ser nulo.");
     this.telefono = telefono;
   }
@@ -151,6 +164,7 @@ public class Cliente extends Usuario {
     super.analizarUsuario();
     System.out.println("Dirección = '" + direccion + '\'' + ", comuna = " + comuna);
   }
+
   @Override
   public String toString() {
     return "model.Cliente " +
@@ -165,4 +179,8 @@ public class Cliente extends Usuario {
             ", edad=" + edad +
             ' ';
   }
+
+
+
+
 }

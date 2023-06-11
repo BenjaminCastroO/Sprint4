@@ -300,7 +300,7 @@ public class Validacion {
     return user;
   }
 
-
+//Un cliente puede tomar ninguna o muchas capacitaciones
   public static Capacitacion validarCapacitacion() {
     int id;
     int rut;
