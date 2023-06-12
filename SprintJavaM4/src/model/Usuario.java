@@ -1,7 +1,9 @@
-//etapa 1 listo
+// Principio: Responsabilidad Unica (SRP)
+// Cada clase tiene una única responsabilidad definida por la interfaz Asesoria. Esto
+// permite que cada clase cambie y evolucione de manera independiente, sin afectar a las
+// demás clases.
 package model;
 import java.lang.String;
-import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -12,10 +14,6 @@ public class Usuario implements IAsesoria{
 private String nombre;
 private String fechaNacimiento;
 private int run;
-// qué hacer con las validaciones para cuando se ingresen datos por consola,
-// ya que actualmente botan el programa cuando no se logra validar un atributo
-
-
     public Usuario(String nombre, String fechaNacimiento) {
         this.nombre = nombre;
         this.fechaNacimiento = fechaNacimiento;
@@ -67,6 +65,9 @@ private int run;
         }
     }
 
+    // Método que muestra la edad del usuario
+    // Cálculo de la edad a partir de la fecha de nacimiento
+    // (método específico de la clase Usuario)
     public void mostrarEdad() {
         DateTimeFormatter tiempo = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         LocalDate cumpleanios = LocalDate.parse(this.fechaNacimiento,tiempo);
@@ -84,6 +85,7 @@ private int run;
     }
 
     @Override
+    // Despliega el nombre y el RUN del usuario
     public void analizarUsuario() {
         System.out.println("nombre='" + nombre + '\'' + ", run=" + run);
     }

@@ -1,13 +1,10 @@
 package model;
 
-import java.sql.Date;
-import java.text.ParseException;
-import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeFormatterBuilder;
+
 import java.time.format.DateTimeParseException;
-import java.util.SimpleTimeZone;
+
 
 public class Capacitacion {
   private int id;
@@ -35,6 +32,9 @@ public class Capacitacion {
     setDuracion(duracion);
     setCantAsistentes(cantAsistentes);
   }
+
+  // Método que muestra el detalle de la capacitación
+  // Retorna un mensaje con información sobre la capacitación
 
   public String mostrarDetalle(){
     String mensaje = "La capacitación será en " + lugar + " a las " + hora +

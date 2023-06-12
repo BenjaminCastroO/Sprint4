@@ -10,11 +10,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-//Estamos en break 21:06 -> 21:20
-
-
-
-
 public class VisitaTerreno {
     private int idVisita;
     private int rut;
