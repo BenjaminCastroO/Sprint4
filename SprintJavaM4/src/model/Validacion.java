@@ -3,6 +3,8 @@ import java.text.SimpleDateFormat;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;
 
@@ -301,7 +303,7 @@ public class Validacion {
   }
 
 //Un cliente puede tomar ninguna o muchas capacitaciones
-  public static Capacitacion validarCapacitacion() {
+  public static Capacitacion validarCapacitacion(List<IAsesoria> lista) {
     int id;
     int rut;
     String dia;
@@ -318,7 +320,20 @@ public class Validacion {
                 "debe ser mayor a cero.");
     } while (id == 0);
 
-    rut = leerNum("Ingresa el rut:");
+    do {
+      valido = false;
+      rut = leerNum("Ingresa el rut del cliente:");
+      for (IAsesoria asesoria : lista) {
+        if (asesoria instanceof Cliente) {
+          Cliente cliente = (Cliente) asesoria;
+          if (cliente.getRun() == rut) {
+            valido = true;
+          }
+        }
+      }
+      if (valido == false)
+        System.out.println("no existe un cliente con el rut proporcionado");
+    } while (!valido);
 
     do {
       lugar = leerTexto("Ingresa el lugar de la capacitación:");

@@ -23,7 +23,7 @@ public class Contenedor {
     listAsesoria.add(Validacion.validarAdministrativo());
   }
   public void agregarCapacitacion(){
-    listCapacitaciones.add(Validacion.validarCapacitacion());
+    listCapacitaciones.add(Validacion.validarCapacitacion(listAsesoria));
   }
 
 
