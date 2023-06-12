@@ -32,3 +32,10 @@ actividades que cada uno involucra para el cumplimiento de los contratos. Es imp
 mantener comunicación con los profesionales en todo momento, aún en terreno, y darle la
 posibilidad de realizar todas sus actividades aun no teniendo conectividad (internet), ya que
 muchas empresas se encuentran en zonas donde no hay conexión de ese tipo.
+
++ Integrantes
+* Benjamin Castro
+* Gonzalo Mercado
+* Pedro Diaz
+
++ Link Repositorio: https://github.com/BenjaminCastroO/Sprint4.git
