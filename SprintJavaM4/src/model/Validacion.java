@@ -10,6 +10,7 @@ import java.util.Scanner;
 
 public class Validacion {
 
+  // Metodo para validar entradas de objeto Administrativo
   public static Administrativo validarAdministrativo(){
     String nombre;
     String fechaNacimiento = "";
@@ -72,6 +73,7 @@ public class Validacion {
     return admin;
   }
 
+  // Metodo para validar entradas de objeto Profesional
   public static Profesional validarProfesional(){
     String nombre;
     String fechaNacimiento = "";
@@ -142,6 +144,7 @@ public class Validacion {
     return pro;
   }
 
+  // Metodo para validar entradas de objeto Cliente
   public static Cliente  validarCliente(){
     String nombres;
     String fechaNacimiento = "";
@@ -302,6 +305,7 @@ public class Validacion {
     return user;
   }
 
+  // Metodo para validar entradas de objeto Capacitacion
 //Un cliente puede tomar ninguna o muchas capacitaciones
   public static Capacitacion validarCapacitacion(List<IAsesoria> lista) {
     int id;

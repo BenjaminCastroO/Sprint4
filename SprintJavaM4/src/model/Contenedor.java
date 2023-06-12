@@ -1,17 +1,26 @@
+// Principio: Responsabilidad Unica (SRP)
+// Cada clase tiene una única responsabilidad definida por la interfaz Asesoria. Esto
+// permite que cada clase cambie y evolucione de manera independiente, sin afectar a las
+// demás clases.
+// Principio: Principio de Inversion de Dependencia (DIP)
+// La clase Contenedor dependen de la abstracción
+// Asesoria (interfaz) en lugar de depender de clases concretas. Esto permite una mayor
+// flexibilidad y extensibilidad en el diseño, ya que se pueden agregar más implementaciones
+// de Asesoria sin afectar el código existente.
 package model;
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.List;
 import java.lang.String;
-import model.Cliente;
-import java.util.Scanner;
-import  model.Profesional;
+
 public class Contenedor {
 
-  private List<IAsesoria> listAsesoria = new ArrayList<>();
-  private List<Capacitacion> listCapacitaciones = new ArrayList<>();
+  private List<IAsesoria> listAsesoria = new ArrayList<>();// Lista de instancias de la interfaz Asesoria
+
+  private List<Capacitacion> listCapacitaciones = new ArrayList<>(); // Lista de objetos de la clase Capacitacion
 
 
+  // Métodos para agregar asesorías
   public void agregarCliente(){
     listAsesoria.add(Validacion.validarCliente());
   }
@@ -22,11 +31,12 @@ public class Contenedor {
   public void agregarAdministrativo(){
     listAsesoria.add(Validacion.validarAdministrativo());
   }
+  // Métodos para agregar capacitaciones
   public void agregarCapacitacion(){
     listCapacitaciones.add(Validacion.validarCapacitacion(listAsesoria));
   }
 
-
+  // Métodos para Listar todos los Usuarios
   public void listarUsuarios() {
     System.out.println("Lista de usuarios:");
     for (IAsesoria asesoria : listAsesoria) {
@@ -34,6 +44,7 @@ public class Contenedor {
       }
     }
 
+  // Métodos para Listar los Usuarios por Tipo
   public void listarUsuariosPorTipo() {
     Scanner scanner = new Scanner(System.in);
     System.out.println("Ingrese el tipo de usuario (cliente, profesional, administrativo):");
@@ -50,7 +61,7 @@ public class Contenedor {
     }
   }
 
-
+  // Métodos para Listar todas las Capacitaciones
   public void listarCapacitaciones() {
     System.out.println("Lista de Capacitaciones:");
 

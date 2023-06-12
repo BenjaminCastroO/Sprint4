@@ -1,9 +1,17 @@
+// Principio: Responsabilidad Unica (SRP)
+// Cada clase tiene una única responsabilidad definida por la interfaz Asesoria. Esto
+// permite que cada clase cambie y evolucione de manera independiente, sin afectar a las
+// demás clases.
+// Principio: Principio de Inversion de Dependencia (DIP)
+// La clase Cliente dependen de la abstracción
+// Asesoria (interfaz) en lugar de depender de clases concretas. Esto permite una mayor
+// flexibilidad y extensibilidad en el diseño, ya que se pueden agregar más implementaciones
+// de Asesoria sin afectar el código existente.
 package model;
 import java.lang.String;
-import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
-import model.VisitaTerreno;
+
 public class Cliente extends Usuario {
   public final int FONASA = 1;
   public final int ISAPRE = 2;
@@ -51,11 +59,15 @@ public class Cliente extends Usuario {
   public void agregarAccidente(Accidente accidente){
     accidentes.add(accidente);
   }
-
+  // Método que obtiene el nombre completo del cliente
+  // Concatenar nombres y apellidos (método específico de la clase Cliente)
   public String obtenerNombre() {
     return (nombres + " " + apellidos);
   }
 
+  // Método que muestra el tipo de sistema de salud del cliente
+  // Despliega el tipo de sistema de salud según el valor registrado
+  // (método específico de la clase Cliente)
   public String obtenerSistemaSalud() {
     if (sistemaDeSalud == 1) return "FONASA";
     if (sistemaDeSalud == 2) return "ISAPRE";
@@ -160,6 +172,8 @@ public class Cliente extends Usuario {
   }
 
   @Override
+  // Llama al método de la clase padre (Usuario)
+  // Despliega la dirección y la comuna del cliente
   public void analizarUsuario() {
     super.analizarUsuario();
     System.out.println("Dirección = '" + direccion + '\'' + ", comuna = " + comuna);
